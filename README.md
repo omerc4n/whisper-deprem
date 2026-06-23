@@ -2,7 +2,7 @@
 
 > Türkiye geneli gerçek zamanlı sismik hareket takip, interaktif harita görselleştirme ve detaylı sismik analiz portalı. Stitch tasarımından ve modern glassmorphic temalardan esinlenilmiştir.
 
-🌐 **Canlı Site (Vercel):** [https://whisper-hava-durumu.vercel.app/](https://whisper-hava-durumu.vercel.app/)
+🌐 **Canlı Site (Vercel):** [https://whisper-deprem.vercel.app/](https://whisper-deprem.vercel.app/)
 
 ---
 
