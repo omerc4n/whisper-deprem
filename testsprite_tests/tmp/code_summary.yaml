@@ -1,0 +1,177 @@
+version: "2"
+type: frontend
+tech_stack:
+  - HTML5
+  - Vanilla JavaScript ES Modules
+  - Vite 6.x
+  - Tailwind CSS
+  - Leaflet.js 1.9.4
+  - Web Audio API
+  - Notification API
+  - Kandilli Rasathanesi REST API
+  - USGS FDSNWS REST API
+
+routes:
+  - path: /
+    file: index.html
+    auth_required: false
+    description: Ana sayfa - tek sayfali deprem takip uygulamasi
+
+features:
+  - name: Interaktif Deprem Haritasi
+    description: Deprem noktalarini interaktif Leaflet haritasinda gosterir. Karanlik ve uydu gorunumu destekler.
+    files:
+      - src/earthquake.js
+      - index.html
+    entry_route: /
+    user_interactions:
+      - Harita uzerinde pan ve zoom yapma
+      - Deprem markerina tiklamak
+      - Harita butonuna tiklamak - karanlik uydu modu degistirme
+      - Sinirlar butonuna tiklamak - sinir cizgilerini gizle goster
+      - Fay Hatlari butonuna tiklamak - sadece uydu modunda
+    api_calls: []
+    auth_required: false
+
+  - name: Canli Deprem Veri Cekimi Kandilli
+    description: Kandilli API uzerinden 30 saniyede bir canli deprem verisi ceker.
+    files:
+      - src/earthquake.js
+    entry_route: /
+    user_interactions:
+      - Sayfa acilinca otomatik veri yuklenir
+      - 30 saniyede bir otomatik guncelleme
+    api_calls:
+      - method: GET
+        endpoint: https://api.orhanaydogdu.com.tr/deprem/kandilli/live?limit=100
+      - method: GET
+        endpoint: https://api.orhanaydogdu.com.tr/deprem/kandilli/archive
+    auth_required: false
+
+  - name: Yedek Veri Kaynagi USGS
+    description: Kandilli API basarisiz olursa USGS verisi kullanilir.
+    files:
+      - src/earthquake.js
+    entry_route: /
+    user_interactions:
+      - Kandilli API hatasi durumunda otomatik fallback
+    api_calls:
+      - method: GET
+        endpoint: https://earthquake.usgs.gov/fdsnws/event/1/query
+    auth_required: false
+
+  - name: Sehir Bolge Arama
+    description: Turkiye 81 il arasinda otomatik tamamlamali arama.
+    files:
+      - src/earthquake.js
+      - src/tr-cities-utf8.json
+    entry_route: /
+    user_interactions:
+      - Arama kutusuna sehir adi yazma
+      - Oneriler listesinden sehir secme
+      - X butonuyla aramay temizleme
+    api_calls: []
+    auth_required: false
+
+  - name: Tarih Navigasyonu Arsiv Modu
+    description: Kullanici onceki gunlere son 7 gun giderek o gunun deprem verilerini gorebilir.
+    files:
+      - src/earthquake.js
+    entry_route: /
+    user_interactions:
+      - Geri butonuna tiklamak - onceki gun
+      - Ileri butonuna tiklamak - bugune donus
+      - Tarih gostergesi okuma
+    api_calls:
+      - method: GET
+        endpoint: https://api.orhanaydogdu.com.tr/deprem/kandilli/archive
+    auth_required: false
+
+  - name: Buyukluk Filtresi
+    description: Deprem listesini buyukluge gore filtreler.
+    files:
+      - src/earthquake.js
+    entry_route: /
+    user_interactions:
+      - Tumü butonuna tiklamak
+      - M2 artı butonuna tiklamak
+      - M3 artı butonuna tiklamak
+      - M4 artı butonuna tiklamak
+    api_calls: []
+    auth_required: false
+
+  - name: Kapsam Secici Bolge Tum TR
+    description: Deprem listesini bolgesel veya tum Turkiye kapsaminda gosterir.
+    files:
+      - src/earthquake.js
+    entry_route: /
+    user_interactions:
+      - Bolge butonuna tiklamak
+      - Tum TR butonuna tiklamak
+    api_calls: []
+    auth_required: false
+
+  - name: Deprem Detay Secimi
+    description: Listeden veya haritadan depreme tiklaninca harita zoom yapar.
+    files:
+      - src/earthquake.js
+    entry_route: /
+    user_interactions:
+      - Deprem kartina tiklamak
+      - Harita markerina tiklamak
+    api_calls: []
+    auth_required: false
+
+  - name: Analiz ve Istatistik Sekmesi
+    description: Max buyukluk, ortalama, M4+ sayisi ve grafikler gosterir.
+    files:
+      - src/earthquake.js
+    entry_route: /
+    user_interactions:
+      - Analiz Grafikler sekmesine tiklamak
+      - Sismograf grafigi hover tooltip
+    api_calls: []
+    auth_required: false
+
+  - name: Canli Bildirim Toast
+    description: Yeni deprem geldiginde sol alt kosede animasyonlu toast gosterir. Sadece bugun modunda aktif.
+    files:
+      - src/earthquake.js
+    entry_route: /
+    user_interactions:
+      - Toast bildirimine tiklamak - bugune donus ve haritada deprem gosterimi
+      - Toast kapatma X butonuna tiklamak
+    api_calls: []
+    auth_required: false
+
+  - name: Tarayici Push Bildirimi
+    description: M4 ve uzeri depremler icin sistem push bildirimi gonderir.
+    files:
+      - src/earthquake.js
+    entry_route: /
+    user_interactions:
+      - Bildirim iznini kabul etmek
+      - Push bildirimine tiklamak
+    api_calls: []
+    auth_required: false
+
+  - name: Ses Alarmi
+    description: Yeni deprem geldiginde buyukluge gore ses calar.
+    files:
+      - src/earthquake.js
+    entry_route: /
+    user_interactions:
+      - Yeni deprem geldiginde otomatik ses
+    api_calls: []
+    auth_required: false
+
+known_limitations:
+  - issue: Web Audio API bazi tarayicilarda kullanici etkilesimi olmadan ses calmiyor
+    location: src/earthquake.js
+    impact: Ilk yuklemede ses alarmi calmiyor olabilir
+  - issue: Tarayici push bildirimleri kullanici izni gerektiriyor
+    location: src/earthquake.js
+    impact: Izin verilmezse push bildirim calismaz
+  - issue: Fay hatti JSON dosyasi buyuk yaklasik 517KB
+    location: src/turkey-faults-full.json
+    impact: Ilk yuklemede hafif gecikme olabilir

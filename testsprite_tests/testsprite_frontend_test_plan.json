@@ -1,0 +1,1356 @@
+[
+  {
+    "id": "TC001",
+    "title": "Uygulama açılışında canlı deprem verilerinin yüklenmesi",
+    "description": "Kullanıcı sayfayı açtığında canlı deprem listesinin otomatik dolduğunu ve harita ile senkron biçimde göründüğünü doğrular.",
+    "category": "Canlı Deprem Verisi ve Yedek Kaynak Kullanımı",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Wait for the live deprem list to load"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify live deprem entries are displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the map and list show the same deprem set"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC002",
+    "title": "Canlı veriler açılışta yüklenir",
+    "description": "Kullanıcı uygulamayı açtığında canlı deprem verilerinin otomatik olarak yüklenmesini ve harita ile listede görünmesini doğrular.",
+    "category": "Tarih Navigasyonu ve Arşiv Modu",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify deprem listesi dolu hale gelir"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify depremlerin haritada da gösterildiği görülür"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC003",
+    "title": "Canlı deprem verilerini açılışta görmek",
+    "description": "Kullanıcı uygulamayı açtığında güncel deprem listesinin ve harita görünümünün otomatik olarak yüklenmesini doğrular.",
+    "category": "Deprem Detay Seçimi",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify recent earthquake entries are displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the map is displayed"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC004",
+    "title": "Ana görünümde canlı deprem verilerini yükleme",
+    "description": "Kullanıcı uygulamayı açtığında canlı deprem verilerinin yüklenmesini ve liste ile harita görünümünde senkron şekilde gösterilmesini doğrular.",
+    "category": "Ana Sayfa / Canlı Takip",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the live earthquake list is displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the map is displayed with earthquake markers"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the live data view is displayed"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC005",
+    "title": "Deprem kartı seçildiğinde haritanın ilgili noktaya odaklanması",
+    "description": "Kullanıcı bir deprem kaydını seçtiğinde detayların açıldığını ve haritanın ilgili konuma yakınlaştığını doğrular.",
+    "category": "Interaktif Deprem Haritası",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Wait for the live deprem list to load"
+      },
+      {
+        "type": "action",
+        "description": "Click a deprem card"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the selected deprem details are shown"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the map focuses on the selected deprem location"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC006",
+    "title": "Yeni veri geldiğinde listenin güncellenmesi",
+    "description": "Kullanıcı açık sayfada kaldığında canlı deprem listesinin zaman içinde yenilendiğini doğrular.",
+    "category": "Canlı Deprem Verisi ve Yedek Kaynak Kullanımı",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Wait for the live deprem list to load"
+      },
+      {
+        "type": "action",
+        "description": "Wait for the next automatic data refresh"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the live deprem list is updated with fresh entries"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC007",
+    "title": "Listeden deprem seçip haritada odağı görmek",
+    "description": "Kullanıcı bir deprem kartını seçtiğinde haritanın seçilen deprem üzerine odaklanmasını ve detayların görünmesini doğrular.",
+    "category": "Deprem Detay Seçimi",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Click a deprem kartı"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the map is focused on the selected earthquake"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the selected earthquake details are displayed"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC008",
+    "title": "Bir deprem seçilince odak ayrıntısı gösterilir",
+    "description": "Kullanıcı listeden veya haritadan bir deprem seçtiğinde ilgili depremin haritada odaklanmasını ve detaylarının görünmesini doğrular.",
+    "category": "Tarih Navigasyonu ve Arşiv Modu",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Select a deprem from the list or map"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify seçili depremin ayrıntıları görünür"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify harita seçili deprem üzerinde odaklanır"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC009",
+    "title": "Deprem seçince harita ve detay odağını güncelleme",
+    "description": "Kullanıcı bir deprem kartı veya marker seçtiğinde ilgili depremin detaylarının ve harita odağının güncellendiğini doğrular.",
+    "category": "Ana Sayfa / Canlı Takip",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Click an earthquake item in the list"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the selected earthquake details are displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the map focuses on the selected earthquake location"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC010",
+    "title": "Harita işaretçisi seçildiğinde deprem detaylarının listede görünmesi",
+    "description": "Kullanıcı haritadaki bir işaretçiyi seçtiğinde ilgili deprem detaylarının ve odaklanmış görünümün gösterildiğini doğrular.",
+    "category": "Interaktif Deprem Haritası",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Wait for the live deprem list to load"
+      },
+      {
+        "type": "action",
+        "description": "Click a deprem marker"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the selected deprem details are shown"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the selected deprem is highlighted in the map and list"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC011",
+    "title": "Ana kaynak uygun olmadığında yedek kaynağın gösterilmesi",
+    "description": "Kullanıcı canlı veri yüklenirken birincil kaynak yerine yedek kaynaktan deprem listesinin sunulduğunu doğrular.",
+    "category": "Canlı Deprem Verisi ve Yedek Kaynak Kullanımı",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Wait for the live deprem list to load"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify deprem entries are displayed from a fallback data source"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC012",
+    "title": "Haritadaki işaretten deprem detayına ulaşmak",
+    "description": "Kullanıcı haritadaki bir deprem işaretini seçtiğinde aynı depremin detaylarının ve konum bilgisinin görünmesini doğrular.",
+    "category": "Deprem Detay Seçimi",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Click an earthquake marker on the map"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the selected earthquake is focused on the map"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the earthquake detail panel is displayed"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC013",
+    "title": "Bugünün verilerine geri dönme",
+    "description": "Kullanıcı arşiv günlerini inceledikten sonra bugünkü canlı görünüme geri dönebildiğini doğrular.",
+    "category": "Canlı Deprem Verisi ve Yedek Kaynak Kullanımı",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Wait for the live deprem list to load"
+      },
+      {
+        "type": "action",
+        "description": "Move to an earlier archive day within the last 7 days"
+      },
+      {
+        "type": "action",
+        "description": "Return to today"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify today's live deprem view is displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the latest deprem data is shown"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC014",
+    "title": "Bugünün canlı görünümüne geri dönme",
+    "description": "Kullanıcı arşiv veya farklı bir görünümden bugün moduna döndüğünde güncel deprem listesi ve harita verilerinin yeniden gösterildiğini doğrular.",
+    "category": "Ana Sayfa / Canlı Takip",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Open an archive day view"
+      },
+      {
+        "type": "action",
+        "description": "Return to today's view"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify today's earthquake data is displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the map and list are synchronized for the current day"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC015",
+    "title": "Son yedi gün içinde tarih değiştirerek arşiv gezintisi",
+    "description": "Kullanıcı tarih geri ve ileri kontrolüyle son 7 gün arşivinde gezindiğinde seçili güne ait harita ve liste verilerinin değiştiğini doğrular.",
+    "category": "Canlı Deprem Verisi ve Yedek Kaynak Kullanımı",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Wait for the live deprem list to load"
+      },
+      {
+        "type": "action",
+        "description": "Move to an earlier archive day within the last 7 days"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the deprem list updates for the selected archive day"
+      },
+      {
+        "type": "action",
+        "description": "Move to a later archive day"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the map and list update for the newly selected day"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC016",
+    "title": "Bugünün canlı görünümüne geri dönmek",
+    "description": "Kullanıcı arşiv günlerinden bugüne döndüğünde canlı veri görünümünün yeniden yüklendiğini doğrular.",
+    "category": "Deprem Detay Seçimi",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Move to an earlier archive day"
+      },
+      {
+        "type": "action",
+        "description": "Return to today view"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify today’s earthquakes are displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the live view is active"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC017",
+    "title": "Şehir aramasıyla öneri seçilip görünümün güncellenmesi",
+    "description": "Kullanıcı şehir adı yazarak otomatik tamamlama önerilerinden seçim yaptığında ilgili konum ve deprem verilerinin güncellendiğini doğrular.",
+    "category": "Şehir ve Bölge Arama",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Wait for the live deprem list to load"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the city search field with a city name"
+      },
+      {
+        "type": "action",
+        "description": "Select a suggestion from the autocomplete list"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the selected city view is displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the deprem list updates for the selected location"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC018",
+    "title": "Tüm depremler görünümüne dönülür",
+    "description": "Kullanıcı büyüklük filtresi uygulanmış olsa bile tüm depremleri gösteren seçeneği seçerek listenin tam kapsamlı hale gelmesini sağlar.",
+    "category": "Büyüklük Filtresi",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Select the option that shows all earthquakes"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify deprem listesinin tam kapsamlı hale geldiği görülür"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC019",
+    "title": "Şehir aramasıyla yerel depremleri filtrelemek",
+    "description": "Kullanıcı şehir adıyla arama yaptığında sonuçların yerel sarsıntılara daraldığını ve arama listesinin güncellendiğini doğrular.",
+    "category": "Deprem Detay Seçimi",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Fill a city name into the search field"
+      },
+      {
+        "type": "action",
+        "description": "Select a matching city from autocomplete results"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify earthquakes for the selected location are displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the map and list reflect the filtered area"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC020",
+    "title": "Şehir aramasıyla yerel deprem sonuçlarını filtreleme",
+    "description": "Kullanıcı şehir otomatik tamamlama ile bir yer aradığında ilgili yerel deprem sonuçlarının gösterildiğini doğrular.",
+    "category": "Şehir/Bölge Arama",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the city search field with a valid city name"
+      },
+      {
+        "type": "action",
+        "description": "Select a suggestion from the autocomplete results"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify earthquake results for the selected location are displayed"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC021",
+    "title": "Önceki gün arşiv verilerine geçilir",
+    "description": "Kullanıcı tarih gezinme denetimleriyle önceki güne geçtiğinde o güne ait deprem listesi ve harita verilerini görür.",
+    "category": "Tarih Navigasyonu ve Arşiv Modu",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Go to the previous day"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify seçili günün değiştiği görülür"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify o güne ait deprem listesi ve harita verileri gösterilir"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC022",
+    "title": "Son 7 gün içinde tarih gezintisi yapma",
+    "description": "Kullanıcı tarih geri ve ileri kontrolleriyle son 7 gün arşivini gezdiğinde seçili güne ait liste ve harita verilerinin değiştiğini doğrular.",
+    "category": "Tarih Gezintisi",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Move to the previous archive day"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the selected day earthquake data is displayed"
+      },
+      {
+        "type": "action",
+        "description": "Move to the next archive day"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the earthquake data updates for the newly selected day"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC023",
+    "title": "Büyüklük filtresiyle deprem listesini daraltma",
+    "description": "Kullanıcı büyüklük filtresini değiştirerek listede yalnızca seçili eşik üstü depremlerin kaldığını doğrular.",
+    "category": "Şehir ve Bölge Arama",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Wait for the live deprem list to load"
+      },
+      {
+        "type": "action",
+        "description": "Select the M3+ magnitude filter"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify only deprem entries at or above the selected magnitude are displayed"
+      },
+      {
+        "type": "action",
+        "description": "Select the all magnitudes filter"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the full deprem list is displayed again"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC024",
+    "title": "M2 ve üzeri depremler filtrelenir",
+    "description": "Kullanıcı M2+ filtresini seçtiğinde yalnızca M2 ve üzeri depremlerin listelendiğini doğrular.",
+    "category": "Büyüklük Filtresi",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Select the M2+ filter"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify listed earthquakes meet the M2 threshold"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC025",
+    "title": "Büyüklük ve kapsam filtreleriyle listeyi daraltmak",
+    "description": "Kullanıcı büyüklük filtresi ve kapsam seçiciyle deprem listesini beklenen şekilde daralttığını doğrular.",
+    "category": "Deprem Detay Seçimi",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Select a magnitude filter"
+      },
+      {
+        "type": "action",
+        "description": "Select the region scope"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the earthquake list is filtered by magnitude"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the selected scope is reflected in the view"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC026",
+    "title": "Arşiv günleri arasında ileri gidilerek bugüne dönülür",
+    "description": "Kullanıcı arşivde geri gezindikten sonra ileri giderek tekrar bugünün verilerine ulaşabildiğini doğrular.",
+    "category": "Tarih Navigasyonu ve Arşiv Modu",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Go to the previous day"
+      },
+      {
+        "type": "action",
+        "description": "Go to the next day"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify bugünün verilerinin tekrar gösterildiği görülür"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC027",
+    "title": "Büyüklük filtresiyle sonuçları daraltma",
+    "description": "Kullanıcı büyüklük filtresini değiştirdiğinde listede yalnızca seçilen eşik ve üstü depremlerin kaldığını doğrular.",
+    "category": "Filtreleme",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Select the M3+ magnitude filter"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the earthquake list is filtered to the selected magnitude threshold"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC028",
+    "title": "Harita modları arasında geçiş yapılması",
+    "description": "Kullanıcı karanlık ve uydu harita görünümleri arasında geçiş yaptığında seçili modun uygulandığını doğrular.",
+    "category": "Interaktif Deprem Haritası",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Wait for the live deprem list to load"
+      },
+      {
+        "type": "action",
+        "description": "Change the map mode to satellite"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the satellite map view is displayed"
+      },
+      {
+        "type": "action",
+        "description": "Change the map mode to dark"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the dark map view is displayed"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC029",
+    "title": "Aramayı temizleyip tüm Türkiye görünümüne dönmek",
+    "description": "Kullanıcı şehir aramasını temizlediğinde filtrelerin kaldırıldığını ve genel Türkiye görünümüne geri dönüldüğünü doğrular.",
+    "category": "Deprem Detay Seçimi",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Fill a city name into the search field"
+      },
+      {
+        "type": "action",
+        "description": "Select a matching city from autocomplete results"
+      },
+      {
+        "type": "action",
+        "description": "Click the clear search control"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the full Turkey earthquake view is displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the search field is cleared"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC030",
+    "title": "Kapsam seçiciyle bölge ve tüm Türkiye arasında geçiş",
+    "description": "Kullanıcı kapsam seçiciyi değiştirerek bölgesel görünüm ile tüm Türkiye görünümü arasında geçiş yaptığını doğrular.",
+    "category": "Şehir ve Bölge Arama",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Wait for the live deprem list to load"
+      },
+      {
+        "type": "action",
+        "description": "Select the region scope"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the regional deprem view is displayed"
+      },
+      {
+        "type": "action",
+        "description": "Select the all-Turkey scope"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the all-Turkey deprem view is displayed"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC031",
+    "title": "Şehir aramasını temizleyip tüm Türkiye görünümüne dönme",
+    "description": "Kullanıcı arama alanını temizlediğinde seçili filtrelerin kaldırıldığını ve genel Türkiye görünümüne dönüldüğünü doğrular.",
+    "category": "Şehir ve Bölge Arama",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Wait for the live deprem list to load"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the city search field with a city name"
+      },
+      {
+        "type": "action",
+        "description": "Select a suggestion from the autocomplete list"
+      },
+      {
+        "type": "action",
+        "description": "Clear the city search field"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the search field is empty"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the view returns to the all-Turkey scope"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC032",
+    "title": "Son 7 gün arşivinde tarih değiştirerek gezmek",
+    "description": "Kullanıcı tarih ileri geri gezdiğinde seçili güne ait arşiv verilerinin harita ve listede değiştiğini doğrular.",
+    "category": "Deprem Detay Seçimi",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Move to an earlier archive day"
+      },
+      {
+        "type": "action",
+        "description": "Move to a later archive day"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the displayed earthquakes match the selected day"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the archive date selection is updated"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC033",
+    "title": "Uydu görünümünde sınır ve fay katmanlarının yönetilmesi",
+    "description": "Kullanıcı uydu modunda sınır çizgileri ve fay hattı katmanlarını açıp kapatabildiğini doğrular.",
+    "category": "Interaktif Deprem Haritası",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Wait for the live deprem list to load"
+      },
+      {
+        "type": "action",
+        "description": "Change the map mode to satellite"
+      },
+      {
+        "type": "action",
+        "description": "Toggle the boundary layer on"
+      },
+      {
+        "type": "action",
+        "description": "Toggle the fault line layer on"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify boundary and fault layers are visible on the map"
+      },
+      {
+        "type": "action",
+        "description": "Toggle the boundary layer off"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the boundary layer is hidden"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC034",
+    "title": "Bölge görünümünde liste daralır",
+    "description": "Kullanıcı kapsamı Bölge olarak değiştirdiğinde listenin bölgesel depremlere göre daraldığını doğrular.",
+    "category": "Kapsam Seçici",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Select the regional scope"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the earthquake list is narrowed to regional results"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC035",
+    "title": "Tüm Türkiye görünümünde liste genişler",
+    "description": "Kullanıcı kapsamı Tüm Türkiye olarak değiştirdiğinde listenin ülke geneline genişlediğini doğrular.",
+    "category": "Kapsam Seçici",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Select the all-Türkiye scope"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the earthquake list expands to nationwide results"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC036",
+    "title": "İstatistik sekmesinde özet metrikleri görmek",
+    "description": "Kullanıcı analiz ve grafikler sekmesine geçtiğinde seçili kapsam için en büyük deprem, ortalama büyüklük ve M4+ sayısı kartlarını görmesini doğrular.",
+    "category": "Analiz ve İstatistik Sekmesi",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Open the analysis and charts section"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the largest earthquake metric is displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the average magnitude and M4+ count metrics are displayed"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC037",
+    "title": "Yeni deprem için canlı toast uyarısının görünmesi",
+    "description": "Kullanıcı açık sayfada yeni deprem oluştuğunda canlı toast bildiriminin göründüğünü doğrular.",
+    "category": "Canlı Deprem Verisi ve Yedek Kaynak Kullanımı",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Wait for the live deprem list to load"
+      },
+      {
+        "type": "action",
+        "description": "Wait for a new earthquake toast to appear"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a live earthquake toast notification is displayed"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC038",
+    "title": "Yeni deprem toast bildiriminin görünmesi ve kapatılması",
+    "description": "Kullanıcı yeni deprem toast bildirimi geldiğinde onu kapatabildiğini ve bildirimin ekrandan kaybolduğunu doğrular.",
+    "category": "Canlı Bildirim Toast",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Wait for a new toast notification to appear"
+      },
+      {
+        "type": "action",
+        "description": "Dismiss the toast notification"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the toast notification is no longer visible"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC039",
+    "title": "Analiz sekmesinde özet metriklerin görüntülenmesi",
+    "description": "Kullanıcı analiz ve istatistik bölümünü açtığında en büyük deprem, ortalama büyüklük ve M4+ sayısı özet kartlarını gördüğünü doğrular.",
+    "category": "Analiz ve İstatistik",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Wait for the live deprem list to load"
+      },
+      {
+        "type": "action",
+        "description": "Open the analytics and statistics section"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the summary metric cards are displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the largest quake, average magnitude, and M4+ metrics are visible"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC040",
+    "title": "Analiz sekmesinde özet metrikleri ve grafiklerini inceleme",
+    "description": "Kullanıcı analiz ve istatistik görünümüne geçtiğinde seçili kapsam ve tarih için özet metriklerin ve grafiklerin gösterildiğini doğrular.",
+    "category": "Analiz ve İstatistik",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Open the analytics and statistics section"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the summary metric cards are displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the seismic activity charts are displayed"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC041",
+    "title": "Seçili tarih bilgisi okunabilir durumda kalır",
+    "description": "Kullanıcı mevcut günün ya da seçili arşiv gününün tarih bilgisini okuyabildiğini doğrular.",
+    "category": "Tarih Navigasyonu ve Arşiv Modu",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify seçili tarih bilgisi görünür"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC042",
+    "title": "Sismograf grafiğinde nokta ayrıntılarını inceleme",
+    "description": "Kullanıcı sismograf grafiğinde bir veri noktasına etkileşim yaptığında ilgili araç ipucunun göründüğünü doğrular.",
+    "category": "Analiz ve İstatistik",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Wait for the live deprem list to load"
+      },
+      {
+        "type": "action",
+        "description": "Open the analytics and statistics section"
+      },
+      {
+        "type": "action",
+        "description": "Hover over a point on the seismograph chart"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a chart tooltip is displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the hovered quake data is shown in the tooltip"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC043",
+    "title": "Sismograf grafiğinde ipuçlarını incelemek",
+    "description": "Kullanıcı sismograf grafiği üzerinde gezindiğinde bağlamsal bilgi ipuçlarının görünmesini doğrular.",
+    "category": "Analiz ve İstatistik Sekmesi",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Open the analysis and charts section"
+      },
+      {
+        "type": "action",
+        "description": "Move over the sismograph chart"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a chart tooltip is displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the tooltip shows earthquake details"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC044",
+    "title": "Bildirim izni verilince güçlü deprem bildirimi alma ve ilgili konuma gitme",
+    "description": "Kullanıcı bildirim izni verdiğinde güçlü deprem için sistem bildirimi alınıp bildirime etkileşim sonrası ilgili deprem konumunun gösterildiğini doğrular.",
+    "category": "Tarayıcı Push Bildirimi",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Allow the browser notification permission request"
+      },
+      {
+        "type": "action",
+        "description": "Wait for a strong earthquake notification to appear"
+      },
+      {
+        "type": "action",
+        "description": "Activate the notification"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the relevant earthquake location is displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify today's earthquake data is displayed"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC045",
+    "title": "Günlük aktivite çubuğu grafiğinde son 7 günü görmek",
+    "description": "Kullanıcı günlük aktivite grafiğinde son 7 günün deprem yoğunluğunu inceleyebildiğini doğrular.",
+    "category": "Analiz ve İstatistik Sekmesi",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Open the analysis and charts section"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the daily activity chart is displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the last 7 days of activity are represented"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC046",
+    "title": "Günlük aktivite çubuğu grafiğinin görüntülenmesi",
+    "description": "Kullanıcı analiz bölümünde günlük deprem aktivite çubuğu grafiğini gördüğünü doğrular.",
+    "category": "Analiz ve İstatistik",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Wait for the live deprem list to load"
+      },
+      {
+        "type": "action",
+        "description": "Open the analytics and statistics section"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the daily activity chart is displayed"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC047",
+    "title": "Yeni deprem geldiğinde ses alarminin çalmasını doğrulama",
+    "description": "Kullanıcı canlı takipte beklediğinde yeni deprem oluştuğunda uygun büyüklükte ses alarmının çaldığını doğrular.",
+    "category": "Ses Alarmı",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Wait for a new earthquake alert"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a sound alarm is triggered for the new earthquake"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the alarm behavior changes based on earthquake magnitude"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC048",
+    "title": "Bildirim izni olmadan sistem bildirimi gönderilmemesi",
+    "description": "Kullanıcı bildirim izni vermediğinde M4+ deprem için sistem bildiriminin gösterilmediğini doğrular.",
+    "category": "Canlı Deprem Verisi ve Yedek Kaynak Kullanımı",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Wait for the live deprem list to load"
+      },
+      {
+        "type": "action",
+        "description": "Deny notification permission if prompted"
+      },
+      {
+        "type": "action",
+        "description": "Wait for an M4+ earthquake to appear"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify no system notification is shown"
+      }
+    ],
+    "priority": "Low"
+  },
+  {
+    "id": "TC049",
+    "title": "Push bildirimi izni reddedildiğinde bildirim davranışını durdurma",
+    "description": "Kullanıcı bildirim iznini reddettiğinde sistem bildirimi akışının etkinleşmediğini doğrular.",
+    "category": "Tarayıcı Push Bildirimi",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Deny the browser notification permission request"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify push notifications are unavailable for earthquake alerts"
+      }
+    ],
+    "priority": "Low"
+  },
+  {
+    "id": "TC050",
+    "title": "Toast bildiriminin kapatılması",
+    "description": "Kullanıcı canlı deprem toast bildirimini kapattığında bildirimin kaybolduğunu doğrular.",
+    "category": "Canlı Deprem Verisi ve Yedek Kaynak Kullanımı",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Wait for the live deprem list to load"
+      },
+      {
+        "type": "action",
+        "description": "Wait for a new earthquake toast to appear"
+      },
+      {
+        "type": "action",
+        "description": "Dismiss the toast notification"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the toast notification is no longer visible"
+      }
+    ],
+    "priority": "Low"
+  }
+]
