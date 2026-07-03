@@ -1253,13 +1253,33 @@ function _renderToast(quake) {
 
   document.body.appendChild(toast);
 
-  // Tıklama → deprem sekmesine odaklan
+  // Tıklama → bugüne dön, veriyi yükle, depremin konumunu haritada göster
   toast.addEventListener('click', (e) => {
     if (e.target.id === 'quake-toast-close') return;
-    activateTab('events');
     toast.remove();
     toastVisible = false;
     processToastQueue();
+
+    // Geçmiş günde isek bugüne (canlı moda) geri dön
+    if (selectedDateOffset !== 0) {
+      selectedDateOffset = 0;
+      updateDateSelectorUI();
+    }
+
+    const lat     = parseFloat(localStorage.getItem('sonEnlem')  || 39.9334);
+    const lon     = parseFloat(localStorage.getItem('sonBoylam') || 32.8597);
+    const name    = localStorage.getItem('sonSehir')  || 'Ankara, Türkiye';
+    const country = localStorage.getItem('sonUlke')   || 'TR';
+
+    // Veriyi yükle, ardından o depremin konumunu haritada göster
+    fetchEarthquakes(lat, lon, name, country).then(() => {
+      activateTab('events');
+      // Depremin koordinatları varsa haritayı o noktaya götür
+      const coords = quake.geojson?.coordinates;
+      if (coords && coords.length >= 2 && map) {
+        map.flyTo([coords[1], coords[0]], 9);
+      }
+    });
   });
 
   const closeBtn = document.getElementById('quake-toast-close');
@@ -1319,7 +1339,32 @@ function sendEarthquakeAlert(quake) {
         tag: quake.earthquake_id,
         requireInteraction: quake.mag >= 5.5
       });
-      n.onclick = () => { window.focus(); n.close(); };
+      n.onclick = () => {
+        window.focus();
+        n.close();
+        // Tarayıcı bildirimine tıklanınca da bugüne dön ve depremi göster
+        if (selectedDateOffset !== 0) {
+          selectedDateOffset = 0;
+          updateDateSelectorUI();
+          const lat     = parseFloat(localStorage.getItem('sonEnlem')  || 39.9334);
+          const lon     = parseFloat(localStorage.getItem('sonBoylam') || 32.8597);
+          const name    = localStorage.getItem('sonSehir')  || 'Ankara, Türkiye';
+          const country = localStorage.getItem('sonUlke')   || 'TR';
+          fetchEarthquakes(lat, lon, name, country).then(() => {
+            activateTab('events');
+            const coords = quake.geojson?.coordinates;
+            if (coords && coords.length >= 2 && map) {
+              map.flyTo([coords[1], coords[0]], 9);
+            }
+          });
+        } else {
+          activateTab('events');
+          const coords = quake.geojson?.coordinates;
+          if (coords && coords.length >= 2 && map) {
+            map.flyTo([coords[1], coords[0]], 9);
+          }
+        }
+      };
     } catch (e) { /* noop */ }
   }
 
@@ -1328,12 +1373,13 @@ function sendEarthquakeAlert(quake) {
 }
 
 function checkAndAlertNewQuakes(quakes) {
-  // Tüm yeni depremler için bildirim gönder (sadece M4+ değil)
   const newAlerts = quakes.filter(
     q => !seenEarthquakeIds.has(q.earthquake_id)
   );
 
-  if (!isFirstLoad && newAlerts.length > 0) {
+  // Bildirimleri SADECE canlı modda (bugün) gönder
+  // Geçmiş günlere gidilince tüm eski depremler bildirim olarak düşmesin
+  if (!isFirstLoad && newAlerts.length > 0 && selectedDateOffset === 0) {
     // En büyük depremin sesini çal
     const maxMag = Math.max(...newAlerts.map(q => q.mag));
     playSeismicAlert(maxMag);
@@ -1341,8 +1387,12 @@ function checkAndAlertNewQuakes(quakes) {
     newAlerts.forEach(q => sendEarthquakeAlert(q));
   }
 
-  quakes.forEach(q => seenEarthquakeIds.add(q.earthquake_id));
-  isFirstLoad = false;
+  // Görülmüş depremleri kaydet — sadece canlı moddayken
+  // (Geçmiş günlerin ID'lerini seen setine ekleme, sadece ilk yüklemede canlı olanları ekle)
+  if (selectedDateOffset === 0) {
+    quakes.forEach(q => seenEarthquakeIds.add(q.earthquake_id));
+    isFirstLoad = false;
+  }
 }
 
 function updateAlarmBtnUI() {
